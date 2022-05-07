@@ -1,19 +1,26 @@
 package jp.co.yumemi.android.code_check.viewModel
 
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.*
-
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import javax.inject.Inject
 
+@HiltAndroidTest
 class OneViewModelTest {
 
-    private lateinit var viewModel: OneViewModel
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
+
+    @Inject
+    lateinit var viewModel: OneViewModel
 
     @Before
-    fun setUp() {
-        //OneViewModelのインスタンス化
-        viewModel = OneViewModel()
+    fun init() {
+        hiltRule.inject()
     }
 
     @After
@@ -21,18 +28,18 @@ class OneViewModelTest {
     }
 
     @Test
-    fun getSearchInputText() {
+    fun testSearchResults() {
+        //Kotlinの検索結果がでてくるか
+        val inputText: String = "Kotlin"
+        viewModel.searchResults(inputText)
+        assertEquals(inputText,viewModel.items.value?.get(0)?.name)
     }
 
     @Test
-    fun getItems() {
-    }
-
-    @Test
-    fun getErrorContent() {
-    }
-
-    @Test
-    fun searchResults() {
+    fun testSearchResultsError() {
+        //空白の際にエラーが返されるか
+        val inputText: String = ""
+        viewModel.searchResults(inputText)
+        assertEquals(viewModel.errorContent.value, "エラーが発生しました。")
     }
 }

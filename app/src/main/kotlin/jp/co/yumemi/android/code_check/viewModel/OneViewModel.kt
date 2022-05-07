@@ -20,10 +20,10 @@ import javax.inject.Inject
  * TwoFragment で使う
  */
 @HiltViewModel
-class OneViewModel : ViewModel() {
-
-    @Inject lateinit var getResourcesRepository: IGetResources
-    @Inject lateinit var apiRepository: IApiRepository
+class OneViewModel @Inject constructor(
+    private val getResourcesRepository: IGetResources,
+    private val apiRepository: IApiRepository
+) : ViewModel() {
 
     //入力欄の保持用
     private val _searchInputText: MutableLiveData<String> by lazy {
