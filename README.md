@@ -1,4 +1,5 @@
 # 株式会社ゆめみ Android エンジニアコードチェック課題
+## 改良ポイントを見つけ次第　[こちらのリポジトリ](https://github.com/takasshii/yumemi_test_version2)　で更新します。
 
 ## 変更点
 
