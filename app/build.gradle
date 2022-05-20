@@ -65,4 +65,14 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:2.41"
     kapt "com.google.dagger:hilt-android-compiler:2.41"
+    //Test
+    testImplementation 'com.google.dagger:hilt-android-testing:2.41'
+    kaptTest 'com.google.dagger:hilt-compiler:2.41'
+
+    // Required -- JUnit 5 framework
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    // Optional -- Robolectric environment
+    testImplementation 'androidx.test:core:1.4.0'
+    // Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:4.0.0'
 }
